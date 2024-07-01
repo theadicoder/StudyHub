@@ -212,7 +212,7 @@ class MyHomePage extends StatelessWidget {
               icon,
               size: 40,
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 8),
             Text(
               title,
               style: const TextStyle(
