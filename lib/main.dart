@@ -10,18 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'StudyHub',
       theme: ThemeData(
-        primarySwatch: const MaterialColor(0xffcf7b1c, <int, Color>{
-          50: Color(0xffcf7b1c),
-          100: Color(0xffcf7b1c),
-          200: Color(0xffcf7b1c),
-          300: Color(0xffcf7b1c),
-          400: Color(0xffcf7b1c),
-          500: Color(0xffcf7b1c),
-          600: Color(0xffcf7b1c),
-          700: Color(0xffcf7b1c),
-          800: Color(0xffcf7b1c),
-          900: Color(0xffcf7b1c),
-        }),
+        primarySwatch: Colors.orange,
       ),
       home: const MyHomePage(title: 'StudyHub'),
     );
@@ -60,12 +49,12 @@ class MyHomePage extends StatelessWidget {
               child: Text(
                 'Menu',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 24,
                 ),
               ),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.orange,
               ),
             ),
             ListTile(
