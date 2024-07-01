@@ -69,6 +69,10 @@ class MyHomePage extends StatelessWidget {
               title: const Text('Profile'),
               onTap: () {
                 Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProfilePage()),
+                );
               },
             ),
             ListTile(
@@ -219,6 +223,132 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  String _name = 'John Doe';
+  String _email = 'johndoe@example.com';
+  String _bio = 'Flutter Developer';
+  String _location = 'New York, USA';
+  List<String> _courses = [
+    'Flutter Development',
+    'React Native',
+    'Machine Learning'
+  ];
+  List<String> _transactions = [
+    'Flutter Development - \$99',
+    'React Native - \$79',
+    'Machine Learning - \$149'
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: NetworkImage(
+                    'https://via.placeholder.com/150',
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                _name,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                _email,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey,
+                ),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Bio',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(_bio),
+              const SizedBox(height: 16),
+              const Text(
+                'Location',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(_location),
+              const SizedBox(height: 16),
+              const Text(
+                'Courses',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              _buildListView(_courses),
+              const SizedBox(height: 16),
+              const Text(
+                'Transactions',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              _buildListView(_transactions),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  // Handle edit profile action
+                },
+                child: const Text('Edit Profile'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildListView(List<String> items) {
+    return ListView.separated(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: items.length,
+      separatorBuilder: (context, index) => const SizedBox(height: 8),
+      itemBuilder: (context, index) {
+        return Text(items[index]);
+      },
     );
   }
 }
